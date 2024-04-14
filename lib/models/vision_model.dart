@@ -13,7 +13,7 @@ class VisionModel {
 
       final Candidates? candidates = (await gemini.textAndImage(
         text:
-            "Detecta cada alimento que contiene la imagen, la cantidad de macronutrientes de cada alimento y solo retorna la suma total de macronutrientes de la comida. Los macronutrientes los vamos a representar con ID's, proteínas = 1, carbohidratos = 2, grasas = 3. Retorna la respuesta en el siguientes formato: {Comida:Descripción, 1:X gramos, 2:Y gramos, 3:Z gramos}",
+            "Detecta cada alimento que contiene la imagen, la cantidad de macronutrientes de cada alimento y solo retorna la suma total de macronutrientes de la comida. Los macronutrientes los vamos a representar con ID's, proteínas = 1, carbohidratos = 2, grasas = 3. Retorna la respuesta en formato JSON, respetando su notacion entre comillas dobles de variables y su valor: {Comida:Descripción, 1:X gramos, 2:Y gramos, 3:Z gramos}",
         images: [imageBytes],
       ));
 

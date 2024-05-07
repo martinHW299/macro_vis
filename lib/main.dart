@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:macro_vision_1/presentations/screens/main_screen.dart';
+import 'package:macro_vision_1/presentations/screens/login_screen.dart';
 import 'package:macro_vision_1/auth/keys.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: const LoginScreen(),
     );
   }
 }

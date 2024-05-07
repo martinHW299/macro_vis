@@ -47,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: const Icon(Icons.post_add),
             activeIcon: const Icon(Icons.post_add),
-            label: 'Subir Imagen',
+            label: 'Subir Comida',
             backgroundColor: colors.primary,
           ),
           BottomNavigationBarItem(

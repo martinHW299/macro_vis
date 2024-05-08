@@ -34,3 +34,13 @@ Grasas: $grasas gramos
 ''';
   return formattedText;
 }
+
+bool isValidEmail(String email) {
+  const emailRegex = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
+  return RegExp(emailRegex).hasMatch(email);
+}
+
+bool isValidPassword(String password) {
+  const passwordRegex = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$';
+  return RegExp(passwordRegex).hasMatch(password);
+}

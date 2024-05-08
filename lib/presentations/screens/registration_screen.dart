@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:macro_vision_1/presentations/views/login_view.dart';
+import 'package:macro_vision_1/presentations/views/registration_view.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   int selectedNavBarIndex = 0;
 
   @override
@@ -24,6 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           backgroundColor: colors.primary,
         ),
-        body: const LoginView());
+        body: const RegistrationView());
   }
 }

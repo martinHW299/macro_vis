@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:macro_vision_1/utils/text_cleaner.dart';
+import 'package:macro_vision_1/utils/text_controllers.dart';
 import 'package:macro_vision_1/utils/upload_image.dart';
 import 'package:flutter/material.dart';
 import 'package:macro_vision_1/models/vision_model.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PreviewView extends StatefulWidget {
   const PreviewView({super.key});
@@ -20,6 +21,8 @@ class _PreviewViewState extends State<PreviewView> {
   File? _selectedImage;
 
   String _resultText = '';
+
+  bool _isLoading = false;
 
   void _loadImageFromGallery() async {
     File? image = await pickImageFromGallery(context);
@@ -43,10 +46,14 @@ class _PreviewViewState extends State<PreviewView> {
 
   void _analyzeImage() async {
     if (_selectedImage != null) {
+      setState(() {
+        _isLoading = true;
+      });
       final String? result =
           await visionModel.processImageAndText(_selectedImage!);
 
       setState(() {
+        _isLoading = false;
         _resultText = result!;
       });
     } else {
@@ -116,17 +123,19 @@ class _PreviewViewState extends State<PreviewView> {
               const SizedBox(height: 20),
               SizedBox(
                 width: imageSize,
-                child: TextField(
-                  readOnly: true,
-                  controller:
-                      TextEditingController(text: resultCleaner(_resultText)),
-                  maxLines: null,
-                  style: const TextStyle(fontSize: 16),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Resultado',
-                  ),
-                ),
+                child: _isLoading
+                    ? const SpinKitFadingCircle(color: Colors.black, size: 40)
+                    : TextField(
+                        readOnly: true,
+                        controller: TextEditingController(
+                            text: resultCleaner(_resultText)),
+                        maxLines: null,
+                        style: const TextStyle(fontSize: 16),
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Resultado',
+                        ),
+                      ),
               )
             ],
           ),
